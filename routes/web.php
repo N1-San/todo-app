@@ -23,6 +23,8 @@ Route::get('/tasks/create',[TasksController::class, 'create']);
 Route::post('tasks',[TasksController::class, 'store']);
 Route::get('/tasks/completed', [TasksController::class, 'completed']);
 Route::patch('/tasks/{id}', [TasksController::class, 'update']);
+Route::delete('/tasks/{id}', [TasksController::class, 'delete']);
+
 // Route::get('/tasks/create', function () {
 //     return view('tasks.create');
 // });
