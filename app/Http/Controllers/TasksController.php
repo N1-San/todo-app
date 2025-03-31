@@ -10,7 +10,7 @@ class TasksController extends Controller
 {
     public function index()
     {
-        $tasks = Task::orderBy('id', 'desc')->get();
+        $tasks = Task::orderBy('completed_at', 'desc')->orderBy('id', 'desc')->get();
         // dd($tasks);
         return view('tasks.index', [
             'tasks' => $tasks,
@@ -43,5 +43,16 @@ class TasksController extends Controller
         return view('tasks.completed',[
             'completed' => $completed
         ]);
+    }
+
+    public function update(Request $request, $id){
+        $task = Task::find($id);
+        $task->is_completed = true;
+        $task->completed_at = now();
+        $task->save();
+
+        // $task = Task::where('id', $id)->first();
+
+        return redirect('/');
     }
 }

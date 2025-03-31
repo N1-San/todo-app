@@ -4,11 +4,22 @@
     <h1>All Tasks</h1>
 
     @foreach ($tasks as $task)
-        <div class="card" style="margin-bottom: 20px">
+        <div class="card @if ($task->isCompleted()) border-success @endif" style="margin-bottom: 20px">
             <div class="card-body">
-            {{ $task->id }} | {{ $task->task_name}}
-                
-                <a class="btn btn-success" href="#">Complete</a>
+            <p>
+                @if ($task->isCompleted())
+                <span class="badge badge-success">Completed</span>
+                @endif 
+                {{ $task->id }} | {{ $task->task_name}}
+                </p>
+                <form action="/tasks/{{ $task->id }}" method="POST">
+                    @method('PATCH')
+                    @csrf
+                    @if (!$task->isCompleted())
+                    <button class="btn btn-info" input="submit">Complete</button>
+                    @endif
+                    
+                </form>
             </div>
         </div>
     @endforeach

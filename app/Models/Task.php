@@ -12,4 +12,8 @@ class Task extends Model
         'task_name',
         'is_completed',
     ]; 
+
+    public function isCompleted(){
+        return $this->completed_at !== null;
+    }
 }
