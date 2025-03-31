@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\TasksController;
+
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -15,9 +17,15 @@ use Inertia\Inertia;
 // });
 
 
-Route::get('/', function () {
-    return view('tasks.index');
-});
+Route::get('/',[TasksController::class, 'index']);
+Route::get('/tasks',[TasksController::class, 'index']);
+Route::get('/tasks/create',[TasksController::class, 'create']);
+Route::post('tasks',[TasksController::class, 'store']);
+Route::get('/tasks/completed', [TasksController::class, 'completed']);
+
+// Route::get('/tasks/create', function () {
+//     return view('tasks.create');
+// });
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

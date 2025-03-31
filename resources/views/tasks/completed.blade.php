@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>All Tasks</h1>
+    <h1>Completed Tasks</h1>
 
-    @foreach ($tasks as $task)
+    @foreach ($completed as $complete)
         <div class="card" style="margin-bottom: 20px">
             <div class="card-body">
-            {{ $task->id }} | {{ $task->task_name}}
+            {{ $complete->id }} | {{ $complete->task_name}}
                 
                 <a class="btn btn-success" href="#">Complete</a>
             </div>
