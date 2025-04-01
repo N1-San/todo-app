@@ -28,10 +28,10 @@
       </ul>
     </div>
   </nav>
-  @if (session()->has('taskId'))
-        <x-alert message="New task created!" :task-id="session('taskId')" />
-        {{ session()->forget('taskId') }}
-    @endif
+  @if (session()->has('message'))
+    <x-alert message="{{ session('message') }}" />
+    {{ session()->forget('message') }}
+  @endif
   <div class="container">
     @yield('content')
   </div>
